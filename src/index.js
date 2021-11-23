@@ -34,6 +34,7 @@ async function onSearch(e) {
   pixabayApiService.resetPage();
   pixabayApiService.fetchImg().then(appendPhotoCardMarkup);
   refs.loadMoreBtnEl.classList.remove('is-hidden');
+  Notify.success(`Hooray! We found ${totalHits} images.`);
 }
 
 async function onLoadMore() {

@@ -2,13 +2,24 @@
   display: flex;
   justify-content: center;
   background: blue;
-  /* margin-right: auto;
-  margin-left: auto; */
+  padding: 20px;
+}
+
+input {
+  width: 150px;
+  height: 30px;
+  font-size: 100%;
+  border-radius: 4px;
+  border: none;
 }
 
 .search-btn {
   font: inherit;
   cursor: pointer;
+  color: #eeeeee;
+  background: rgb(7, 160, 7);
+  border-radius: 4px;
+  border: none;
 }
 
 .gallery {
@@ -18,18 +29,48 @@
   padding: 20px 15px;
 }
 
+.photo-card {
+  border: 1px solid #eeeeee;
+  margin-bottom: 20px;
+}
+
 img {
   display: block;
 
   object-fit: cover;
 }
 
+.info {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.info-item {
+  font-weight: bold;
+}
+
+.info-data {
+  font-weight: normal;
+}
+
 .load-more {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  padding: 10px 20px;
   font: inherit;
   cursor: pointer;
+  color: #eeeeee;
+  background: #2196f3;
+  border-radius: 4px;
+  border: none;
+  margin-bottom: 25px;
+}
+
+.load-more:hover {
+  background: #188ce8;
 }
 
 .load-more.is-hidden {
