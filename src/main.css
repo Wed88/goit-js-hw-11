@@ -24,12 +24,16 @@ input {
 
 .gallery {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  margin-top: -20px;
+  margin-left: -20px;
   padding: 20px 15px;
 }
 
 .photo-card {
+  flex-basis: calc((100% - 125px) / 5);
+  margin-top: 20px;
+  margin-left: 20px;
   border: 1px solid #eeeeee;
   margin-bottom: 20px;
 }

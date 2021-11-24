@@ -19,25 +19,28 @@ async function onSearch(e) {
   e.preventDefault();
   pixabayApiService.searchQuery = e.currentTarget.elements.searchQuery.value;
 
+  await refs.loadMoreBtnEl.classList.add('is-hidden');
+
   const hits = await pixabayApiService.fetchImg();
   const totalHits = hits.data.totalHits;
 
   if (totalHits < 1) {
-    clearPhotoCardGallery();
     refs.loadMoreBtnEl.classList.add('is-hidden');
+    clearPhotoCardGallery();
     Notify.failure('Sorry, there are no images matching your search query. Please try again.');
     return;
   }
 
-  clearPhotoCardGallery();
+  await clearPhotoCardGallery();
 
-  pixabayApiService.resetPage();
-  pixabayApiService.fetchImg().then(appendPhotoCardMarkup);
-  refs.loadMoreBtnEl.classList.remove('is-hidden');
+  await pixabayApiService.resetPage();
+  await pixabayApiService.fetchImg().then(appendPhotoCardMarkup);
+  await refs.loadMoreBtnEl.classList.remove('is-hidden');
   Notify.success(`Hooray! We found ${totalHits} images.`);
 }
 
 async function onLoadMore() {
+  await pixabayApiService.fetchImg().then(appendPhotoCardMarkup);
   const hits = await pixabayApiService.fetchImg();
   const hitsLength = hits.data.hits.length;
 
@@ -46,7 +49,6 @@ async function onLoadMore() {
     Notify.info("We're sorry, but you've reached the end of search results.");
     return;
   }
-  pixabayApiService.fetchImg().then(appendPhotoCardMarkup);
 }
 
 function appendPhotoCardMarkup(getImg) {
